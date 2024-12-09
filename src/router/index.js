@@ -32,6 +32,16 @@ const router = createRouter({
       name: 'slotTest',
       component: () => import('@/views/slotTest/parent.vue'),
     },
+    {
+      path: '/vueEcharts',
+      name: 'vueEcharts',
+      component: () => import('@/views/vueEcharts/index.vue'),
+    },
+    {
+      path: '/echarts',
+      name: 'echarts',
+      component: () => import('@/views/echarts/index.vue'),
+    },
   ],
 })
 
