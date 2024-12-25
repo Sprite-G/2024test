@@ -42,6 +42,16 @@ const router = createRouter({
       name: 'echarts',
       component: () => import('@/views/echarts/index.vue'),
     },
+    {
+      path: '/topo',
+      name: 'topo',
+      component: () => import('@/views/topo/index.vue'),
+    },
+    {
+      path: '/topoExp',
+      name: 'topoExp',
+      component: () => import('@/views/topoExp/index.vue'),
+    },
   ],
 })
 

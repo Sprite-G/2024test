@@ -1,6 +1,9 @@
 <template>
-  <div>
-    <echarts :option="option"></echarts>
+  <div style="width: 800px;height: 600px;">
+    <echarts :option="option1"></echarts>
+  </div>
+  <div style="width: 800px;height: 600px;">
+    <echarts :option="option2"></echarts>
   </div>
 </template>
 
@@ -13,7 +16,8 @@ import {
   onMounted,
   getCurrentInstance
 } from 'vue'
-
+import option1 from './params/options1';
+import option2 from './params/options2';
 const option = ref({
   title: {
     text: "Traffic Sources",
@@ -30,7 +34,7 @@ const option = ref({
   },
   series: [
     {
-      name: "Traffic Sources",
+      // name: "Traffic Sources",
       type: "pie",
       radius: "55%",
       center: ["50%", "60%"],
