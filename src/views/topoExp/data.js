@@ -197,7 +197,7 @@ export default  {
       "type": "quadratic-node",
       "style": {},
       "x": 1444.1392642255457,
-      "y": 590.2603188929003
+      "y": 600
     }
   ],
   // 边集
@@ -326,6 +326,11 @@ export default  {
     }, {
       id: 'edge26',
       source: '9', // String，必须，起始点 id
+      target: '15', // String，必须，目标点 id
+    },
+    {
+      id: 'edge27',
+      source: '14', // String，必须，起始点 id
       target: '15', // String，必须，目标点 id
     }
   ],

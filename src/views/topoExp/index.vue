@@ -1,40 +1,43 @@
 <template>
-  <div class="network-topo">
-    <div class="tip" v-if="showTip">
-      <!-- <el-button type="primary" @click="seIsBeginNode('1', true)">开始节点</el-button>
-      <el-button type="primary" @click="setIsEndNode('15', true)">结束节点</el-button>
-      <el-button type="primary" @click="setFlow(['edge2', 'edge11', 'edge24'],'#40bd0b')">设置流动的链路</el-button>
-      <el-button type="primary" @click="setFlow(['edge3', 'edge14', 'edge26'],'#e4a71b')">设置流动的链路</el-button> -->
-      <div><img src="./topoImg/deviceBegin.png" />开始节点</div>
-      <div style="margin-left: 20px">
-        <img src="./topoImg/deviceEnd.png" />结束节点
-      </div>
-      <div style="margin-left: 20px">
-        <span style="    display: inline-block;
-    width: 50px;
-    height: 3px;
-    border-top: 3px dotted #1a9c16;
-    margin-right: 5px;
-    margin-bottom: 4px;"></span>主路径
-      </div>
-      <div style="margin-left: 20px">
-        <span style="    display: inline-block;
+  <div class='container'>
+    <div class="network-topo">
+      <div class="tip" v-if="showTip">
+        <el-button type="primary" @click="seIsBeginNode('1', true)">开始节点</el-button>
+        <el-button type="primary" @click="setIsEndNode('15', true)">结束节点</el-button>
+        <el-button type="primary" @click="setFlow(['edge2', 'edge11', 'edge24'], '#40bd0b')">设置流动的链路</el-button>
+        <el-button type="primary" @click="setFlow(['edge3', 'edge14', 'edge26'], '#e4a71b')">设置流动的链路</el-button>
+        <div><img src="./topoImg/deviceBegin.png" />开始节点</div>
+        <div style="margin-left: 20px">
+          <img src="./topoImg/deviceEnd.png" />结束节点
+        </div>
+        <div style="margin-left: 20px">
+          <span style="display: inline-block;
+              width: 50px;
+              height: 3px;
+              border-top: 3px dotted #1a9c16;
+              margin-right: 5px;
+              margin-bottom: 4px;"></span>主路径
+        </div>
+        <div style="margin-left: 20px">
+          <span style="    display: inline-block;
     width: 50px;
     height: 3px;
     border-top: 3px dotted #dca74a;
     margin-right: 5px;
     margin-bottom: 4px;"></span>备路径
+        </div>
       </div>
+      <div class="action">
+        <el-button-group>
+          <el-button type="primary" @click="updatePositon" icon="Promotion">{{ isUpdate ? '确定' : '修改位置' }}</el-button>
+          <el-button type="primary" @click="downloadImage" icon="Film">下载图片</el-button>
+        </el-button-group>
+
+      </div>
+      <div id="topo-config"></div>
     </div>
-    <div class="action">
-      <el-button-group>
-        <el-button type="primary" @click="updatePositon" icon="Promotion">{{isUpdate?'确定':'修改位置'}}</el-button>
-        <el-button type="primary" @click="downloadImage" icon="Film">下载图片</el-button>
-      </el-button-group>
-      
-    </div>
-    <div id="topo-config"></div>
   </div>
+
 </template>
 <script setup>
 import { onMounted, ref, nextTick } from "vue";
@@ -47,7 +50,7 @@ const props = defineProps({
   // 截图框的宽高比例
   showTip: {
     type: Boolean,
-    default: false
+    default: true
   }
 })
 
@@ -126,10 +129,16 @@ const setFlow = (edgeIdList, color) => {
 defineExpose({ seIsBeginNode, setIsEndNode, setFlow });
 </script>
 <style scoped lang="scss">
+.container {
+  width: 1920px;
+  height: 1080px;
+}
+
 .network-topo {
   position: relative;
   height: 100%;
   width: 100%;
+
   #topo-config {
     position: absolute;
     left: 0;
@@ -137,6 +146,7 @@ defineExpose({ seIsBeginNode, setIsEndNode, setFlow });
     bottom: 0;
     right: 0;
   }
+
   .tip {
     position: absolute;
     z-index: 9;
@@ -145,16 +155,18 @@ defineExpose({ seIsBeginNode, setIsEndNode, setFlow });
     display: flex;
     align-items: center;
     color: #333;
+
     img {
       width: 25px;
       vertical-align: -6px;
       margin-right: 6px;
     }
   }
+
   .action {
     position: absolute;
-    right: 20px;
-    top: 20px;
+    left: 20px;
+    top: 60px;
     z-index: 9;
   }
 }

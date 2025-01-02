@@ -16,7 +16,7 @@ export const topoUtils = {
         const that = this;
         const element = document.getElementById(id);
         this.registerEdge();
-        this.registerNodeDefault();
+        // this.registerNodeDefault();
         graph = new G6.Graph({
             container: id,
             width: element.offsetWidth, // Number，必须，图的宽度
@@ -78,12 +78,13 @@ export const topoUtils = {
             })
             data.x = device.x;
             data.y = device.y;
-            console.log("data", obj.nodes)
+            console.log("node:dragend", obj.nodes)
         });
         graph.on('node:click', (e) => {
             const nodeItem = e.item // 获取被点击的节点元素对象
             const device = nodeItem.getModel();
             callback("node-click", device);
+            console.log("node:click", e)
 
         })
     },
@@ -463,7 +464,7 @@ export const topoUtils = {
         return `<div class="topo-tooltip">
             <div><label>本端设备：</label>${sourceNode.devName || '-'}</div>
             <div><label>对端设备：</label>${targetNode.devName || '-'}</div>
-            <div><label>丢包率：</label>${ '0%'}</div>
+            <div><label>丢包率：</label>${'0%'}</div>
             <div><label>抖动：</label>${'0ms'}</div>
             <div><label>时延：</label>${value.latency || '3ms'}</div>
             </div>`;
